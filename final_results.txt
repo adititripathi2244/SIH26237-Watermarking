@@ -1,0 +1,108 @@
+SIH WATERMARKING SYSTEM
+FINAL TEST RESULTS
+====================
+
+1. DOCX WATERMARKING
+--------------------
+Documents tested : 5
+Passed           : 5
+Failed           : 0
+Accuracy         : 100%
+
+Target           : >85%
+Status           : PASSED
+
+
+2. PHASE 3 TEST SUITE
+---------------------
+Total tests      : 20
+Passed           : 20
+Failed           : 0
+Basic accuracy   : 100%
+
+Status           : PASSED
+
+
+3. IMAGE ROBUSTNESS
+-------------------
+Print-scan 150 DPI
+PSNR : 25.41 dB
+SSIM : 0.9783
+
+Print-scan 300 DPI
+PSNR : 56.85 dB
+SSIM : 0.9999
+
+JPEG Quality 50
+PSNR : 40.10 dB
+SSIM : 0.9967
+
+JPEG Quality 30
+PSNR : 37.22 dB
+SSIM : 0.9943
+
+JPEG Quality 10
+PSNR : 32.77 dB
+SSIM : 0.9885
+
+
+4. PDF ROBUSTNESS
+-----------------
+Print-scan 150 DPI
+PSNR : 29.50 dB
+SSIM : 0.9912
+
+Print-scan 300 DPI
+PSNR : 60.44 dB
+SSIM : 0.9999
+
+JPEG Quality 50
+PSNR : 43.51 dB
+SSIM : 0.9984
+
+JPEG Quality 30
+PSNR : 40.77 dB
+SSIM : 0.9976
+
+JPEG Quality 10
+PSNR : 35.97 dB
+SSIM : 0.9935
+
+
+5. PDF PERFORMANCE
+------------------
+Pages processed : 10
+Measured time   : approximately 0.06 seconds
+
+Target          : <2 seconds
+Status          : PASSED
+
+
+6. COMBINED TEST SUITE
+----------------------
+Test modules    : 5
+Passed          : 5
+Failed          : 0
+
+Overall status  : PASSED
+
+
+7. CURRENT LIMITATION
+---------------------
+The current DOCX watermark uses character spacing as its carrier.
+
+The print-scan simulator operates on rendered images.
+
+Therefore, end-to-end extraction of the current DOCX
+character-spacing watermark after physical print/scan has
+not been demonstrated.
+
+Further integration and a more robust watermark carrier
+would be required for complete print-scan-resistant
+watermarking.
+
+
+8. PENDING ITEMS
+----------------
+Member 2 integration : Pending
+GitHub commit        : Pending

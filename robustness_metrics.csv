@@ -1,0 +1,6 @@
+Test,PSNR (dB),SSIM
+print_scan_150dpi,25.41,0.9783
+print_scan_300dpi,56.85,0.9999
+jpeg_quality_50,40.1,0.9967
+jpeg_quality_30,37.22,0.9943
+jpeg_quality_10,32.77,0.9885

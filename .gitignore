@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Generated robustness images
+*_print_scan_*.jpg
+*_jpeg_quality_*.jpg
+test_print_scan.jpg
+test_screenshot.jpg
+robustness_original.png
+
+# Generated test documents
+phase3_docx_*.docx
+phase3_image_*.png
+phase3_test.pdf
+speed_test_10_pages.pdf
+
+# Generated watermark test documents
+watermarked_sample.docx
+saved_watermarked.docx
+multi_watermarked.docx
+robustness_watermarked.docx
+
+# Generated PDF test files
+test_robustness.pdf
+pdf_rendered_original.png
+
+# Generated sample/test documents
+sample.docx
+test_doc_*.docx
+
+# Python/package/cache files
+*.pyc
+jpeg_quality_*.jpg
+print_scan_*.jpg
