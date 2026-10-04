@@ -76,4 +76,4 @@ The `final_handover` folder contains:
 
 **Status:** Implemented DOCX functionality and completed the recorded test suite. Further integration and pending format support should be coordinated with the team.
 
-**GitHub commit and full team integration:** To be confirmed.
+**GitHub commit:** Completed and pushed. **Full team integration:** Pending confirmation.
