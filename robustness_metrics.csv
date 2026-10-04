@@ -4,3 +4,8 @@ print_scan_300dpi,56.85,0.9999
 jpeg_quality_50,40.1,0.9967
 jpeg_quality_30,37.22,0.9943
 jpeg_quality_10,32.77,0.9885
+screenshot_recompression,48.03,0.9992
+gaussian_blur_sigma_0.5,34.66,0.9976
+gaussian_blur_sigma_1.0,25.83,0.98
+gaussian_blur_sigma_1.5,22.52,0.9557
+scanner_noise,36.47,0.9402

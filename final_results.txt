@@ -45,6 +45,25 @@ JPEG Quality 10
 PSNR : 32.77 dB
 SSIM : 0.9885
 
+Screenshot Recompression
+PSNR : 48.03 dB
+SSIM : 0.9992
+
+Gaussian Blur Sigma 0.5
+PSNR : 34.66 dB
+SSIM : 0.9976
+
+Gaussian Blur Sigma 1.0
+PSNR : 25.83 dB
+SSIM : 0.9800
+
+Gaussian Blur Sigma 1.5
+PSNR : 22.52 dB
+SSIM : 0.9557
+
+Scanner Noise
+PSNR : 36.47 dB
+SSIM : 0.9402
 
 4. PDF ROBUSTNESS
 -----------------
@@ -86,23 +105,24 @@ Failed          : 0
 
 Overall status  : PASSED
 
-
-7. CURRENT LIMITATION
----------------------
+7. CURRENT LIMITATIONS
+----------------------
 The current DOCX watermark uses character spacing as its carrier.
 
 The print-scan simulator operates on rendered images.
 
-Therefore, end-to-end extraction of the current DOCX
-character-spacing watermark after physical print/scan has
-not been demonstrated.
+End-to-end extraction of the current DOCX character-spacing
+watermark after physical print/scan has not been demonstrated.
 
-Further integration and a more robust watermark carrier
-would be required for complete print-scan-resistant
-watermarking.
+The unified interface currently supports DOCX watermark
+embedding and extraction.
 
+PDF and image watermark embedding and extraction are
+not yet implemented in the unified interface.
 
-8. PENDING ITEMS
-----------------
-Member 2 integration : Pending
-GitHub commit        : Pending
+8. INTEGRATION AND HANDOVER STATUS
+----------------------------------
+DOCX integration test : PASSED
+Full test suite       : 5/5 modules PASSED
+Member 2 integration : Pending confirmation
+GitHub commit        : Pending confirmation

@@ -1,3 +1,5 @@
+
+
 import cv2
 import numpy as np
 
@@ -118,9 +120,22 @@ def main():
             + ".jpg"
         )
 
+        image = data["image"]
+
+        # Convert PIL Image to NumPy array if needed
+        if not isinstance(image, np.ndarray):
+            image = np.array(image)
+
+        # Convert RGB to BGR for OpenCV
+        if len(image.shape) == 3 and image.shape[2] == 3:
+            image = cv2.cvtColor(
+                image,
+                cv2.COLOR_RGB2BGR
+            )
+
         cv2.imwrite(
             filename,
-            data["image"]
+            image
         )
 
         print("\n" + test_name)

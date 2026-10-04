@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFilter
 
 
 class PrintScanSimulator:
@@ -131,6 +131,18 @@ class PrintScanSimulator:
     # =================================================
     # PSNR CALCULATION
     # =================================================
+
+    def simulate_gaussian_blur(self, image, sigma=1.0):
+        img = image if isinstance(image, Image.Image) else Image.fromarray(image)
+        return img.filter(ImageFilter.GaussianBlur(radius=float(sigma)))
+
+    def simulate_scanner_noise(self, image, mean=0.0, std=5.0):
+        img = image if isinstance(image, Image.Image) else Image.fromarray(image)
+        arr = np.array(img).astype(np.float32)
+        rng = np.random.default_rng(42)
+        noise = rng.normal(mean, std, arr.shape)
+        arr = np.clip(arr + noise, 0, 255).astype(np.uint8)
+        return Image.fromarray(arr)
 
     def _calculate_psnr(self, original, processed):
         """
@@ -445,6 +457,82 @@ class PrintScanSimulator:
             )
         }
 
+        # -----------------------------------------
+        # SCREENSHOT RECOMPRESSION
+        # -----------------------------------------
+
+        result = self.simulate_screenshot(
+            image,
+            jpeg_quality=85
+        )
+
+        results["screenshot_recompression"] = {
+            "image": result,
+            "psnr": self._calculate_psnr(image, result),
+            "ssim": self._calculate_ssim(image, result)
+        }
+
+        # -----------------------------------------
+        # GAUSSIAN BLUR 0.5
+        # -----------------------------------------
+
+        result = self.simulate_gaussian_blur(
+            image,
+            sigma=0.5
+        )
+
+        results["gaussian_blur_sigma_0.5"] = {
+            "image": result,
+            "psnr": self._calculate_psnr(image, result),
+            "ssim": self._calculate_ssim(image, result)
+        }
+
+        # -----------------------------------------
+        # GAUSSIAN BLUR 1.0
+        # -----------------------------------------
+
+        result = self.simulate_gaussian_blur(
+            image,
+            sigma=1.0
+        )
+
+        results["gaussian_blur_sigma_1.0"] = {
+            "image": result,
+            "psnr": self._calculate_psnr(image, result),
+            "ssim": self._calculate_ssim(image, result)
+        }
+
+        # -----------------------------------------
+        # GAUSSIAN BLUR 1.5
+        # -----------------------------------------
+
+        result = self.simulate_gaussian_blur(
+            image,
+            sigma=1.5
+        )
+
+        results["gaussian_blur_sigma_1.5"] = {
+            "image": result,
+            "psnr": self._calculate_psnr(image, result),
+            "ssim": self._calculate_ssim(image, result)
+        }
+
+        # -----------------------------------------
+        # SCANNER NOISE
+        # -----------------------------------------
+
+        result = self.simulate_scanner_noise(
+            image,
+            mean=0.0,
+            std=5.0
+        )
+
+        results["scanner_noise"] = {
+            "image": result,
+            "psnr": self._calculate_psnr(image, result),
+            "ssim": self._calculate_ssim(image, result)
+        }
+
         return results
 
 
@@ -526,9 +614,16 @@ if __name__ == "__main__":
 
         filename = test_name + ".jpg"
 
+        output_image = data["image"]
+        if isinstance(output_image, Image.Image):
+            output_image = cv2.cvtColor(
+                np.array(output_image),
+                cv2.COLOR_RGB2BGR
+            )
+
         cv2.imwrite(
             filename,
-            data["image"]
+            output_image
         )
 
         print(
