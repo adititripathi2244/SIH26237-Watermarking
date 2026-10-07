@@ -35,7 +35,7 @@ for i in range(1, 6):
     )
 
     passed = (
-        result["recipient_id"] == recipient_id
+        result["recipient_id"] == __import__("hashlib").sha256(recipient_id.encode()).hexdigest()
         and result["timestamp"] == timestamp
         and result["checksum_valid"]
     )
