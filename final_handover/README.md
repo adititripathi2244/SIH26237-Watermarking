@@ -36,7 +36,7 @@ The watermark contains:
 - Magic identifier
 - Version
 - Timestamp
-- Recipient ID
+- SHA-256 watermark ID
 - CRC32 checksum
 
 The watermark is converted into binary bits.
@@ -219,15 +219,34 @@ Important project files include:
 - `test_5_docx.py`
 - `test_image_robustness.py`
 - `test_pdf_robustness.py`
-- `test_20_documents.py`
 - `test_10page_speed.py`
 - `generate_metrics_table.py`
 - `test_suite.py`
 - `robustness_metrics.csv`
+- `member3_integration/`
 
 ---
 
-## 13. Current Limitations
+## 13. Member 2 Integration Verification
+
+Member 2's PDF and image watermarking modules were verified for
+watermark embedding and extraction.
+
+The generated watermark ID was successfully recovered after extraction.
+
+The Member 2 watermark ID was also verified against the Member 3
+DOCX watermark flow.
+
+Integration result:
+
+- Member 2 watermark ID generation: PASSED
+- Member 2 PDF embed/extract: PASSED
+- Member 2 image embed/extract: PASSED
+- Member 2 ↔ Member 3 watermark ID match: PASSED
+
+---
+
+## 14. Current Limitations
 
 The current DOCX watermarking implementation is a prototype based on
 character spacing.
@@ -240,18 +259,22 @@ the current implementation does not demonstrate end-to-end extraction of
 the existing DOCX character-spacing watermark after physical printing,
 scanning, or image rendering.
 
-Additional watermark carriers would be required for a complete
-print-scan-resistant watermarking pipeline.
+PDF and image watermarking are provided by Member 2's modules and are
+not currently incorporated into Member 3's unified interface.
+
+ML-DSA, Fabric ledger, and the remaining provenance-layer integration are
+handled by the respective team members.
 
 ---
 
-## 14. Current Status
+## 15. Current Status
 
 The current implementation successfully demonstrates:
 
 - DOCX watermark embedding
 - DOCX watermark extraction
-- Recipient identification
+- SHA-256 watermark ID generation and recovery
+- Recipient identification through the watermark ID
 - Timestamp storage
 - CRC32 integrity verification
 - Multi-format detection
@@ -263,8 +286,7 @@ The current implementation successfully demonstrates:
 - Multi-document testing
 - PDF performance testing
 - Combined automated testing
+- Member 2 watermark integration verification
 
-Phase 3 testing and performance checkpoints have been completed.
-
-Member 2 integration remains pending until the corresponding component
-is ready.
+Phase 3 testing, performance checkpoints, and the required Member 2
+watermark integration verification have been completed.

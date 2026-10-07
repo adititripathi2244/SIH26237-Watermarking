@@ -1,3 +1,4 @@
+import hashlib
 from io import BytesIO
 import struct
 import zlib
@@ -46,7 +47,8 @@ class DOCXWatermarker:
         Convert recipient ID + timestamp into binary bits.
         """
 
-        recipient_bytes = recipient_id.encode("utf-8")
+        watermark_id = hashlib.sha256(str(recipient_id).encode()).hexdigest()
+        recipient_bytes = watermark_id.encode("utf-8")
 
         if len(recipient_bytes) > self.MAX_RECIPIENT_LENGTH:
             raise ValueError(
